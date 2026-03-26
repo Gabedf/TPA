@@ -1,9 +1,5 @@
 package src.dominio;
 
-/**
- *
- * @author victoriocarvalho
- */
 public class Aluno {
 
     private String nome;
@@ -22,7 +18,7 @@ public class Aluno {
         if (this == a) return true;
         if (a == null || getClass() != a.getClass()) return false;
         Aluno aluno = (Aluno) a;
-        return nome != null && nome.equals(aluno.nome);
+        return this.matricula == aluno.matricula;
     }
     
     @Override
@@ -32,43 +28,33 @@ public class Aluno {
 
 
     /**
-     * @return the nome
+     * Cria um objeto-chave para buscas e remoções por matrícula.
+     * Utilizado em conjunto com equals(), que compara apenas a matrícula.
      */
+    public static Aluno porMatricula(int matricula) {
+        return new Aluno(matricula, "", 0);
+    }
+
     public String getNome() {
         return nome;
     }
 
-    /**
-     * @param nome the nome to set
-     */
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    /**
-     * @return the matricula
-     */
     public int getMatricula() {
         return matricula;
     }
 
-    /**
-     * @param matricula the matricula to set
-     */
     public void setMatricula(int matricula) {
         this.matricula = matricula;
     }
 
-    /**
-     * @return the nota
-     */
     public int getNota() {
         return nota;
     }
 
-    /**
-     * @param nota the nota to set
-     */
     public void setNota(int nota) {
         this.nota = nota;
     }

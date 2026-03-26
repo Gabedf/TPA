@@ -10,8 +10,14 @@ public class ListaEncadeada<T> implements IColecao<T> {
 
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
-        return super.toString();
+        StringBuilder sb = new StringBuilder();
+        No<T> atual = this.primeiro;
+        while (atual != null) {
+            sb.append(atual.getValor());
+            if (atual.getProx() != null) sb.append("\n");
+            atual = atual.getProx();
+        }
+        return sb.toString();
     }
 
     public ListaEncadeada() { this.primeiro = this.ultimo = null; }
