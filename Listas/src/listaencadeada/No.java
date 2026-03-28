@@ -1,5 +1,4 @@
 package src.listaencadeada;
-import java.util.LinkedList;
 
 /**
  * Generic node for use in a linked list.
