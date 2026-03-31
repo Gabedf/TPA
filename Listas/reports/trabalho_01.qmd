@@ -43,7 +43,7 @@ text-align: justify}
 | Criação classe ListaEncadeada | César Augusto Bispo Santos |
 | Implementação Programa que use Biblioteca| César Augusto Bispo Santos |
 
-#### Responsabilidades atividades
+#### Github
 github: https://github.com/Gabedf/TPA/tree/main/Listas/src
 
 # Seção 02
@@ -118,7 +118,8 @@ Random random = new Random();
 try (BufferedWriter writer = new BufferedWriter(new FileWriter(caminhoArquivo))) {
     for (int i = 1; i <= quantidade; i++) {
         int matricula = i;
-        String nome = NOMES[random.nextInt(NOMES.length)] + " " + SOBRENOMES[random.nextInt(SOBRENOMES.length)];
+        String nome = NOMES[random.nextInt(NOMES.length)] + " " + 
+        SOBRENOMES[random.nextInt(SOBRENOMES.length)];
         int nota = random.nextInt(11);
         
         writer.write(matricula + ";" + nome + ";" + nota);
