@@ -506,8 +506,8 @@ A tabela comparativa considera apenas as operações de busca e remoção, que i
 | Operação (1.600.000 registros) | Mais rápida | Intermediária | Mais lenta |
 | :--- | :---: | :---: | :---: |
 | Pesquisar (existente) | ArrayList (15,33 ms) | ListaEncadeada (62,56 ms) | LinkedList (64,73 ms) |
-| Pesquisar (inexistente) | ArrayList (10,91 ms) | LinkedList (64,71 ms) | ListaEncadeada (62,88 ms) |
-| Remover (último elemento) | ArrayList (11,46 ms) | LinkedList (65,83 ms) | ListaEncadeada (60,65 ms) |
+| Pesquisar (inexistente) | ArrayList (10,91 ms) | ListaEncadeada (62,88 ms) | LinkedList (64,71 ms) |
+| Remover (último elemento) | ArrayList (11,46 ms) | ListaEncadeada (60,65 ms) | LinkedList (65,83 ms) | 
 
 **ArrayList foi consistentemente mais rápido nas operações de traversal**, apesar de possuir a mesma complexidade assintótica O(N) das demais. Em 1,6M de registros, o `ArrayList` é entre **~4× e ~6× mais rápido** que as listas encadeadas em busca (15,33 ms vs. ~63–65 ms). Essa diferença expressiva de fator constante pode ser explicada pela **localidade de cache**: o `ArrayList` armazena referências em posições contíguas de memória, permitindo que a CPU antecipe e pré-carregue blocos adjacentes eficientemente (*cache prefetching*). As listas encadeadas alocam cada nó separadamente no heap, resultando em acessos dispersos e frequentes *cache misses* durante a traversal — custo proporcional ao tamanho da lista, e que explica o fator de diferença observado. Essa hipótese é consistente com os dados, mas não foi medida diretamente (nenhum profiler de cache foi utilizado).
 
