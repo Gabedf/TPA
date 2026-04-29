@@ -1,7 +1,7 @@
-package src.dominio;
+package dominio;
 
 import src.benchmark.Benchmark;
-import src.colecao.IColecao;
+import colecao.IColecao;
 import src.gerador.GeradorDados;
 import src.listaencadeada.ListaEncadeada;
 
