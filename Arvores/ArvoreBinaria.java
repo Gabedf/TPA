@@ -38,8 +38,23 @@ public class ArvoreBinaria<T> extends ArvoreBinariaBase<T> {
 
     @Override
     public void adicionar(T novoValor) {
-        // TODO: Implementar de forma recursiva
-        throw new UnsupportedOperationException("Método adicionar não implementado.");
+        raiz = adicionarRecursivo(raiz, novoValor);
+    }
+
+    private NoArvore<T> adicionarRecursivo (NoArvore<T> atual, T valor) {
+        if (atual == null) {
+            this.qtdNos++;
+            return new NoArvore<>(valor);
+        }
+
+        int comparacao = this.comparador.compare(valor, atual.getValor());
+
+        if (comparacao < 0) {
+            atual.setEsquerdo(adicionarRecursivo(atual.getEsquerdo(), valor));
+        } else if (comparacao > 0) {
+            atual.setDireito(adicionarRecursivo(atual.getDireito(), valor));
+        }
+        return atual;
     }
 
     @Override
