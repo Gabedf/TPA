@@ -15,20 +15,71 @@ public class ArvoreBinaria<T> extends ArvoreBinariaBase<T> {
 
     @Override
     public int altura() {
-        // TODO: Implementar
-        throw new UnsupportedOperationException("Método altura não implementado.");
+        return alturaRecursivo(raiz);
+    }
+
+    private int alturaRecursivo(NoArvore<T> atual) {
+        if (atual == null) {
+            return -1;
+        } else {
+            int alturaEsquerda = alturaRecursivo(atual.getEsquerdo());
+            int alturaDireita = alturaRecursivo(atual.getDireito());
+            if (alturaEsquerda > alturaDireita) {
+                return alturaEsquerda + 1;
+            } else {
+                return alturaDireita + 1;
+            }
+        }
     }
 
     @Override
     public String caminharEmNivel() {
-        // TODO: Implementar
-        throw new UnsupportedOperationException("Método caminharEmNivel não implementado.");
+        if (raiz == null) {
+            return "[]";
+        }
+        
+        StringBuilder resultado = new StringBuilder("[");
+        java.util.Queue<NoArvore<T>> fila = new java.util.LinkedList<>();
+        fila.add(raiz);
+        
+        while (!fila.isEmpty()) {
+            NoArvore<T> atual = fila.poll();
+            resultado.append(atual.getValor().toString());
+            
+            if (atual.getEsquerdo() != null) {
+                fila.add(atual.getEsquerdo());
+            }
+            if (atual.getDireito() != null) {
+                fila.add(atual.getDireito());
+            }
+            
+            if (!fila.isEmpty()) {
+                resultado.append(", ");
+            }
+        }
+        resultado.append("]");
+        return resultado.toString();
     }
 
     @Override
     public String caminharEmOrdem() {
-        // TODO: Implementar
-        throw new UnsupportedOperationException("Método caminharEmOrdem não implementado.");
+        StringBuilder resultado = new StringBuilder("[");
+        caminharEmOrdemRecursivo(raiz, resultado);
+        
+        if (resultado.length() > 1) {
+            resultado.setLength(resultado.length() - 2); // Remove a última vírgula e espaço
+        }
+        
+        resultado.append("]");
+        return resultado.toString();
+    }
+
+    private void caminharEmOrdemRecursivo(NoArvore<T> atual, StringBuilder resultado) {
+        if (atual != null) {
+            caminharEmOrdemRecursivo(atual.getEsquerdo(), resultado);
+            resultado.append(atual.getValor().toString()).append(", ");
+            caminharEmOrdemRecursivo(atual.getDireito(), resultado);
+        }
     }
 
     @Override
