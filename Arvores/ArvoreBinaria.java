@@ -35,10 +35,10 @@ public class ArvoreBinaria<T> extends ArvoreBinariaBase<T> {
     @Override
     public String caminharEmNivel() {
         if (raiz == null) {
-            return "[]";
+            return "";
         }
         
-        StringBuilder resultado = new StringBuilder("[");
+        StringBuilder resultado = new StringBuilder();
         java.util.Queue<NoArvore<T>> fila = new java.util.LinkedList<>();
         fila.add(raiz);
         
@@ -54,30 +54,28 @@ public class ArvoreBinaria<T> extends ArvoreBinariaBase<T> {
             }
             
             if (!fila.isEmpty()) {
-                resultado.append(", ");
+                resultado.append("\n");
             }
         }
-        resultado.append("]");
         return resultado.toString();
     }
 
     @Override
     public String caminharEmOrdem() {
-        StringBuilder resultado = new StringBuilder("[");
+        StringBuilder resultado = new StringBuilder();
         caminharEmOrdemRecursivo(raiz, resultado);
         
-        if (resultado.length() > 1) {
-            resultado.setLength(resultado.length() - 2); // Remove a última vírgula e espaço
+        if (resultado.length() > 0) {
+            resultado.setLength(resultado.length() - 1); // Remove a última quebra de linha
         }
         
-        resultado.append("]");
         return resultado.toString();
     }
 
     private void caminharEmOrdemRecursivo(NoArvore<T> atual, StringBuilder resultado) {
         if (atual != null) {
             caminharEmOrdemRecursivo(atual.getEsquerdo(), resultado);
-            resultado.append(atual.getValor().toString()).append(", ");
+            resultado.append(atual.getValor().toString()).append("\n");
             caminharEmOrdemRecursivo(atual.getDireito(), resultado);
         }
     }
