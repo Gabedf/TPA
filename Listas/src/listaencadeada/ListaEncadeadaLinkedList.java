@@ -1,6 +1,6 @@
 package src.listaencadeada;
 
-import src.colecao.IColecao;
+import colecao.IColecao;
 
 import java.util.LinkedList;
 

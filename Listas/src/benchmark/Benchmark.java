@@ -1,7 +1,7 @@
 package src.benchmark;
 
-import src.colecao.IColecao;
-import src.dominio.Aluno;
+import colecao.IColecao;
+import dominio.Aluno;
 import src.gerador.GeradorDados;
 import src.listaencadeada.ListaEncadeada;
 import src.listaencadeada.ListaEncadeadaArrayList;

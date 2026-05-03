@@ -1,9 +1,9 @@
-package src.dominio;
+package dominio;
 
 import src.benchmark.Benchmark;
-import src.colecao.IColecao;
+import colecao.IColecao;
 import src.gerador.GeradorDados;
-import src.listaencadeada.ListaEncadeada;
+import Arvores.ArvoreBinaria;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        IColecao<Aluno> lista = new ListaEncadeada<>();
+        IColecao<Aluno> lista = new ArvoreBinaria<>(Aluno.obterComparadorPorMatricula());
         Scanner scanner = new Scanner(System.in);
         boolean executando = true;
 

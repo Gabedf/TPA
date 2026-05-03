@@ -1,4 +1,6 @@
-package src.dominio;
+package dominio;
+
+import java.util.Comparator;
 
 public class Aluno {
 
@@ -33,6 +35,13 @@ public class Aluno {
      */
     public static Aluno porMatricula(int matricula) {
         return new Aluno(matricula, "", 0);
+    }
+
+    /**
+     * Retorna um comparador para ordenar a árvore binária pela matrícula.
+     */
+    public static Comparator<Aluno> obterComparadorPorMatricula() {
+        return Comparator.comparingInt(Aluno::getMatricula);
     }
 
     public String getNome() {
